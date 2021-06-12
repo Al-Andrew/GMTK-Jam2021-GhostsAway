@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Chain.gd" type="Script" id=1]
+
+[sub_resource type="SegmentShape2D" id=1]
+
+[node name="Chain" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource( 1 )
+LongColor = Color( 0.156863, 0.223529, 0.941176, 1 )
+ShortColor = Color( 0.901961, 0.0784314, 0.0784314, 1 )
+
+[node name="Colision" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Line2d" type="Line2D" parent="."]
+points = PoolVector2Array( 0, 0, 0, 0 )
+width = 1.5
+default_color = Color( 0.164706, 0.223529, 0.462745, 1 )
+
+[connection signal="area_shape_entered" from="." to="." method="_on_Chain_area_shape_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Chain_body_entered"]
