@@ -13,11 +13,7 @@ func _ready() -> void:
 	pass 
 
 func die() -> void:
-	var chain = get_parent().get_node("Chain");
-	if chain != null :
-		chain.queue_free()
-		
-	self.queue_free()
+	get_tree().reload_current_scene()
 
 
 func _physics_process(delta) -> void:
@@ -36,10 +32,6 @@ func _physics_process(delta) -> void:
 	else:
 		m_Velocity.x = 0;
 	
-	
 	m_Velocity = move_and_slide(m_Velocity, Vector2.UP)
-	pass
 
 
-func _on_GhostColision_body_entered(body):
-	get_tree().reload_current_scene()

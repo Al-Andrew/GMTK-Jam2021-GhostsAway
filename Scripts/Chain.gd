@@ -9,7 +9,6 @@ func _ready() -> void:
 	player = get_parent().get_node("Player/ChainAttach")
 	ghost = get_parent().get_node("Ghost/ChainAttach")
 
-
 func _physics_process(delta):
 	var player_pos:Vector2 = player.global_position
 	var ghost_pos:Vector2 = ghost.global_position
@@ -23,13 +22,6 @@ func _physics_process(delta):
 
 
 func _on_Chain_body_entered(body):
-	ghost.get_parent().die()
-	queue_free()
-
-
-func _on_Chain_area_shape_entered(area_id, area, area_shape, local_shape):
-	if area != player.get_parent().get_node("GhostColision") :
+	if body.is_in_group("Shuriken"):
 		ghost.get_parent().die()
 		queue_free()
-
-

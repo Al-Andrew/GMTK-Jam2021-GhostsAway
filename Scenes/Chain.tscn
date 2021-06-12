@@ -4,7 +4,9 @@
 
 [sub_resource type="SegmentShape2D" id=1]
 
-[node name="Chain" type="Area2D"]
+[node name="Chain" type="Area2D" groups=[
+"Chain",
+]]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource( 1 )
@@ -19,5 +21,4 @@ points = PoolVector2Array( 0, 0, 0, 0 )
 width = 1.5
 default_color = Color( 0.164706, 0.223529, 0.462745, 1 )
 
-[connection signal="area_shape_entered" from="." to="." method="_on_Chain_area_shape_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Chain_body_entered"]

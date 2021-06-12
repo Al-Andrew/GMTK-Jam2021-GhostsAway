@@ -92,6 +92,14 @@ gameplay_left={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Ghost"
+2d_physics/layer_3="Chain"
+2d_physics/layer_4="Shuriken"
+2d_physics/layer_10="World"
+
 [physics]
 
 common/enable_pause_aware_picking=true
