@@ -4,9 +4,13 @@ export var speed: Vector2
 export var destroy_on_colision: bool
 export var rotation_speed: float
 
+func die() -> void:
+	if destroy_on_colision :
+			queue_free()
+
+
 func _ready():
 	pass 
-
 
 func _physics_process(delta):
 	
@@ -18,7 +22,4 @@ func _physics_process(delta):
 		if body.is_in_group("Player") :
 			body.die()
 		
-		
-		
-		if destroy_on_colision :
-			queue_free()
+		die()

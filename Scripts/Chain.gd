@@ -23,5 +23,6 @@ func _physics_process(delta):
 
 func _on_Chain_body_entered(body):
 	if body.is_in_group("Shuriken"):
+		body.die()
 		ghost.get_parent().die()
 		queue_free()
