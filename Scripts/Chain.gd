@@ -1,13 +1,13 @@
 extends Area2D
 
-var player
-var ghost
+onready var player
+onready var ghost
 export var LongColor: Color
 export var ShortColor: Color
 
-func _ready() -> void:
-	player = get_parent().get_node("Player/ChainAttach")
-	ghost = get_parent().get_node("Ghost/ChainAttach")
+func _ready() -> void :
+	print(get_node("Colision"))
+
 
 func _physics_process(delta):
 	var player_pos:Vector2 = player.global_position
@@ -17,12 +17,15 @@ func _physics_process(delta):
 	var dist:float = (player_pos - ghost_pos).length()
 	$Line2d.default_color = ShortColor.linear_interpolate(LongColor, dist/100)
 	
-	$Colision.shape.set_a(player_pos)
-	$Colision.shape.set_b(ghost_pos)
+	self.get_node("Colision").shape.set_a(player_pos)
+	self.get_node("Colision").shape.set_b(ghost_pos)
+	
+	for i in get_overlapping_bodies():
+		if i.is_in_group("Shuriken") :
+			i.die()
+			ghost.get_parent().die()
+			queue_free()
 
 
 func _on_Chain_body_entered(body):
-	if body.is_in_group("Shuriken"):
-		body.die()
-		ghost.get_parent().die()
-		queue_free()
+	pass

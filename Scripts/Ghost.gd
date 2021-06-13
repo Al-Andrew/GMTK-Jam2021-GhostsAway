@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+export (PackedScene) var chain
+
 export var maxSpeed:float
 var player
 
@@ -9,6 +11,11 @@ var distance: float
 
 func _ready() -> void :
 	player = get_parent().get_node("Player")
+	var ch :Node2D = chain.instance()
+	ch.player = player.get_node("ChainAttach")
+	ch.ghost = get_node("ChainAttach")
+	
+	get_parent().call_deferred("add_child",ch)
 
 func _physics_process(delta):
 	distance = (player.position - position).length()
@@ -26,4 +33,4 @@ func die():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "dissapear":
-		get_tree().reload_current_scene()
+		queue_free()
