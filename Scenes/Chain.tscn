@@ -9,13 +9,16 @@ resource_local_to_scene = true
 "Chain",
 ]]
 collision_layer = 4
-collision_mask = 4
+collision_mask = 8
 script = ExtResource( 1 )
 LongColor = Color( 0.156863, 0.223529, 0.941176, 1 )
 ShortColor = Color( 0.901961, 0.0784314, 0.0784314, 1 )
 
 [node name="Colision" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Line2d" type="Line2D" parent="."]
 points = PoolVector2Array( 0, 0, 0, 0 )

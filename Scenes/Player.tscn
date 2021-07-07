@@ -9,9 +9,11 @@ extents = Vector2( 4.01526, 6.98219 )
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
-collision_layer = 0
-collision_mask = 520
+collision_mask = 522
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 m_jumpSpeed = 500.0
 m_gravity = 200.0
 m_speed = 300.0

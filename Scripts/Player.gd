@@ -27,11 +27,12 @@ func _physics_process(delta) -> void:
 	
 	if Input.is_action_pressed("gameplay_left"):
 		m_Velocity.x = -m_speed
+		$Sprite.flip_h = true
 	elif Input.is_action_pressed("gameplay_right"):
 		m_Velocity.x = m_speed
+		$Sprite.flip_h = false
 	else:
 		m_Velocity.x = 0;
 	
+	
 	m_Velocity = move_and_slide(m_Velocity, Vector2.UP)
-
-

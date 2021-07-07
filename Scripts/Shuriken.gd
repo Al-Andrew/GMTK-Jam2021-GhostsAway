@@ -12,14 +12,14 @@ func die() -> void:
 func _ready():
 	pass 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	rotate(rotation_speed)
 	
 	var colision := move_and_collide(speed)
 	if colision != null :
 		var body := colision.collider
-		if body.is_in_group("Player") :
+		if body.is_in_group("Player"):
 			body.die()
 		
 		die()

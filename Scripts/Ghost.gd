@@ -8,10 +8,12 @@ var player
 var direction: Vector2 
 var speed: float
 var distance: float
+var ch :Node2D
 
 func _ready() -> void :
+	get_parent().register_ghost()
 	player = get_parent().get_node("Player")
-	var ch :Node2D = chain.instance()
+	ch = chain.instance()
 	ch.player = player.get_node("ChainAttach")
 	ch.ghost = get_node("ChainAttach")
 	
@@ -30,6 +32,7 @@ func _physics_process(delta):
 
 func die():
 	$AnimationPlayer.play("dissapear")
+	get_parent().remove_ghost()
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "dissapear":

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/music/15-Dark Fantasy Studio- The corner of your room (seamless).mp3" type="AudioStream" id=1]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource( 1 )
+volume_db = -25.242
+autoplay = true
+mix_target = 1
